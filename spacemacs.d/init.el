@@ -25,12 +25,12 @@ values."
      ;; ----------------------------------------------------------------
      auto-completion
      syntax-checking
-     ;; intero
-     haskell
+     intero
      yaml
      emacs-lisp
      purescript
      nixos
+     rust
      git
      markdown
      org
