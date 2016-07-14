@@ -34,8 +34,8 @@ values."
      git
      markdown
      org
-     ;; (mu4e  :variables
-     ;;        mu4e-installation-path "/usr/share/emacs/site-lisp")
+     (mu4e :variables
+           mu4e-installation-path "/run/current-system/sw/share/emacs/site-lisp/mu4e")
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom)
@@ -121,7 +121,7 @@ values."
                                :size 20
                                :weight normal
                                :width normal
-                               :powerline-scale 1.5)
+                               :powerline-scale 1.1)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The leader key accessible in `emacs state' and `insert state'
@@ -249,13 +249,15 @@ values."
 It is called immediately after `dotspacemacs/init'.  You are free to put almost
 any user code here.  The exception is org related code, which should be placed
 in `dotspacemacs/user-config'."
+  ;; (setq ispell-program-name (executable-find "hunspell")
+  ;;       ispell-local-dictionary "en_US"
+  ;;       ispell-local-dictionary-alist '(("en_US" "[[:alpha:]]" "[^[:alpha:]]" "[']" nil ("-d" "en_US") nil utf-8)))
   )
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
 layers configuration. You are free to put any user code."
 
-  ;; Could not find a non toggle based max frame 
   (when (not (cdr (assoc 'fullscreen (frame-parameters))))
     (spacemacs/toggle-maximize-frame))
 
@@ -268,14 +270,7 @@ layers configuration. You are free to put any user code."
   (when (not (display-graphic-p))
     (setq dotspacemacs-mode-line-unicode-symbols nil))
 
-  ;; (golden-ratio-mode t)
-
-  (setq org-agenda-files '("~/org/misc.org"))
-
-  (setq company-tooltip-limit 20)                      ; bigger popup window
-  (setq company-idle-delay .3)                         ; decrease delay before autocompletion popup shows
-  (setq company-echo-delay 0)                          ; remove annoying blinking
-  (setq company-begin-commands '(self-insert-command)) ; start autocompletion only after typing
+  ;; (setq org-agenda-files '("~/org/misc.org"))
 
   (epa-file-enable)
 
@@ -283,10 +278,9 @@ layers configuration. You are free to put any user code."
      :server "layer3communications.irc.slack.com"
      :port 6667
      :nick "mckeankylej"
-     :password "layer3communications.wZkFimBdisMAPzC5sbSj"
      :full-name "mckeankylej")))
- 
-  ;; (load "~/.spacemacs.d/mail.el")
+
+  (load "~/.spacemacs.d/mail.el")
 )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
