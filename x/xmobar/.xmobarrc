@@ -3,7 +3,7 @@ Config { font = "xft:Source Code Pro:size=18"
        , bgColor = "#292b2e"
        , fgColor = "#b2b2b2"
        , alpha = 255
-       , position = Top --Static { xpos = 0, ypos = 0, width = 3840, height = 50 }
+       , position = Static { xpos = 20, ypos = 20, width = 3800, height = 50 }
        , lowerOnStart = False
        , hideOnStart = False
        , allDesktops = True

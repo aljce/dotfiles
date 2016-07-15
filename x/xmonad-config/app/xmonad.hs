@@ -11,6 +11,7 @@ import XMonad.Layout.NoBorders
 import XMonad.Layout.MultiToggle.Instances
 import XMonad.Hooks.SetWMName
 import XMonad.Layout.Minimize
+import XMonad.Layout.Fullscreen
 import XMonad.Util.Paste
 
 import System.Exit
@@ -21,10 +22,6 @@ import qualified Data.Map as M
 myTerminal = "urxvt"
 
 myFocusFollowsMouse = True
-
--- Whether clicking on a window to focus also passes the click to the window
--- myClickJustFocuses :: Bool
--- myClickJustFocuses = False
 
 myBorderWidth = 4
 
@@ -45,8 +42,8 @@ myKeys conf =
   , ("M-r",   spawn "rofi -show run")
   , ("M-f",   spawn"firefox")
   , ("M-e",   spawn "emacs")
-  , ("<XF86MonBrightnessDown>", spawn "xbacklight -dec 10")
-  , ("<XF86MonBrightnessUp>"  , spawn "xbacklight -inc 10")
+  , ("<XF86MonBrightnessDown>", spawn "light -U 10")
+  , ("<XF86MonBrightnessUp>"  , spawn "light -A 10")
   , ("<XF86AudioLowerVolume>" , spawn "amixer set Master 5%-")
   , ("<XF86AudioRaiseVolume>" , spawn "amixer set Master 5%+")
   , ("M-j",   windows W.focusDown)
@@ -61,24 +58,28 @@ myKeys conf =
   , ("M-S-q", io exitSuccess)
   ] ++
   [("M"++ shf ++ "-" ++ [wsId], windows (f ws))
-  | (ws,wsId) <- zip (workspaces conf) "123456789"--"&[{}(=*)+]"
+  | (ws,wsId) <- zip (workspaces conf) "123456789"--"&[{}(=*)+]" Programmers dvorak anyone?
   , (f ,shf) <- [(W.greedyView,""),(\w -> W.greedyView w . W.shift w ,"-S")]]
 
 myMouseBindings (XConfig {XMonad.modMask = modm}) = M.empty
 
-myLayout = avoidStruts (mkToggle (NOBORDERS ?? FULL ?? EOT) (tiled ||| Full))
-  where
-     -- default tiling algorithm partitions the screen into two panes
-     tiled   = gaps [(U,10), (R,10), (L,10), (R,10)] $ spacing 10 $ Tall nmaster delta ratio
+myLayout = (avoidStruts . fullscreenFull) (nTall ||| full)
+  where nTall = spacing 10 (Tall 1 (3/100) (1/2))
+        full  = noBorders Full
 
-     -- The default number of windows in the master pane
-     nmaster = 1
+-- myLayout = avoidStruts (mkToggle (NOBORDERS ?? FULL ?? EOT) (tiled ||| Full))
+--   where
+--      -- default tiling algorithm partitions the screen into two panes
+--      tiled   = gaps [(U,10), (R,10), (L,10), (R,10)] $ spacing 10 $ Tall nmaster delta ratio
 
-     -- Default proportion of screen occupied by master pane
-     ratio   = 1/2
+--      -- The default number of windows in the master pane
+--      nmaster = 1
 
-     -- Percent of screen to increment by when resizing panes
-     delta   = 3/100
+--      -- Default proportion of screen occupied by master pane
+--      ratio   = 1/2
+
+--      -- Percent of screen to increment by when resizing panes
+--      delta   = 3/100
 
 myManageHook = manageDocks
 
@@ -95,25 +96,23 @@ myStartupHook conf= do
   checkKeymap conf (myKeys conf)
 
 myConfig xmproc = def {
-        terminal           = myTerminal,
-        focusFollowsMouse  = myFocusFollowsMouse,
-        --clickJustFocuses   = myClickJustFocuses,
-        borderWidth        = myBorderWidth,
-        modMask            = myModMask,
-        workspaces         = myWorkspaces,
-        normalBorderColor  = myNormalBorderColor,
-        focusedBorderColor = myFocusedBorderColor,
-        keys               = \c -> mkKeymap c (myKeys c),
-        mouseBindings      = myMouseBindings,
-        layoutHook         = myLayout,
-        manageHook         = myManageHook,
-        handleEventHook    = myEventHook,
-        logHook            = myLogHook xmproc,
-        startupHook        = myStartupHook (myConfig xmproc)
-    }
+  terminal           = myTerminal,
+  focusFollowsMouse  = myFocusFollowsMouse,
+  borderWidth        = myBorderWidth,
+  modMask            = myModMask,
+  workspaces         = myWorkspaces,
+  normalBorderColor  = myNormalBorderColor,
+  focusedBorderColor = myFocusedBorderColor,
+  keys               = mkKeymap <*> myKeys, -- Applicative for (->)
+  mouseBindings      = myMouseBindings,
+  layoutHook         = myLayout,
+  manageHook         = myManageHook,
+  handleEventHook    = myEventHook,
+  logHook            = myLogHook xmproc,
+  startupHook        = myStartupHook (myConfig xmproc) }
 
 
 main :: IO ()
 main = do
-  xmproc <- spawnPipe "$(which xmobar) /home/kyle/.xmobarrc"
+  xmproc <- spawnPipe "/run/current-system/sw/bin/xmobar /home/kyle/.xmobarrc"
   xmonad $ myConfig xmproc
