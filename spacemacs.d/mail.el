@@ -16,7 +16,7 @@
                                      (mu4e-drafts-folder . "/personal/Drafts")
                                      (mu4e-sent-messages-behavoir 'delete)))
          ,(make-mu4e-context :name "Work"
-                             :enter-func (lambda () (mu4e-message "Switched to Personal context"))
+                             :enter-func (lambda () (mu4e-message "Switched to Work context"))
                              :match-func (lambda (msg)
                                            (when msg (mu4e-message-contact-field-matches msg :to "kmckean@layer3com.com")))
                              :vars '((user-mail-address . "kmckean@layer3com.com")
@@ -31,12 +31,13 @@
       mu4e-view-show-images t)
 
 (setq message-send-mail-function 'smtpmail-send-it
-      message-kill-buffer-on-exit t
+      smtpmail-debug-info t
+      smtpmail-starttls-credentials
+        '(("smtp.gmail.com" 587 nil nil))
       smtpmail-stream-type 'starttls
       smtpmail-default-smtp-server "smtp.gmail.com"
       smtpmail-smtp-server "smtp.gmail.com"
       smtpmail-smtp-service 587)
-
 
 ;; use imagemagick, if available
 (when (fboundp 'imagemagick-register-types)

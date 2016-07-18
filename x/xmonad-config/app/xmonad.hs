@@ -64,7 +64,7 @@ myKeys conf =
 myMouseBindings (XConfig {XMonad.modMask = modm}) = M.empty
 
 myLayout = (avoidStruts . fullscreenFull) (nTall ||| full)
-  where nTall = spacing 10 (Tall 1 (3/100) (1/2))
+  where nTall = spacing 20 (Tall 1 (3/100) (1/2))
         full  = noBorders Full
 
 -- myLayout = avoidStruts (mkToggle (NOBORDERS ?? FULL ?? EOT) (tiled ||| Full))
