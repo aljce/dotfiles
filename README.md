@@ -4,13 +4,20 @@ Dotfiles for:
 * xmobar
 * urxvt
 * spacemacs
-* liquidprompt
-
+* rtorrent
+* offlineimap + mu4e
+* git
+* users-dirs
 # Install 
 ```sh
- ./installRepos.sh
+./installRepos.sh
 ```
-In the project directory
+or to install a single repo run
+```sh
+./$REPO/install.sh
+```
+If you are someone other than Kyle McKean you will want to do this because I doubt you want my email in everything ;)
+
 # WARNING 
 This nukes your personal dotfiles!
 
