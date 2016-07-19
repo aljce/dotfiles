@@ -33,7 +33,8 @@ values."
      rust
      git
      markdown
-     org
+     (org :variables
+          org-enable-github-support t)
      (mu4e :variables
            mu4e-installation-path "/run/current-system/sw/share/emacs/site-lisp/mu4e")
      (shell :variables
