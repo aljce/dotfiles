@@ -6,6 +6,7 @@ Dotfiles for:
 * spacemacs
 * rtorrent
 * offlineimap + mu4e
+* haskell-stack
 * git
 * users-dirs
 # Install 
