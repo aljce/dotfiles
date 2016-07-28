@@ -26,6 +26,7 @@ values."
      auto-completion
      syntax-checking
      intero
+     ;; liquid-types
      yaml
      emacs-lisp
      purescript
@@ -46,7 +47,6 @@ values."
      games
      erc
      xkcd
-     themes-megapack
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these

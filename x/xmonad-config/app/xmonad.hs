@@ -27,7 +27,7 @@ myBorderWidth = 4
 
 myModMask = mod1Mask
 
-myWorkspaces = ["1: CODE","2: WEB","3: SYS","4: COMM","5: ETC"] ++ map show [6..9]
+myWorkspaces = ["1: WEB","2: CODE","3: SYS","4: COMM","5: ETC"] ++ map show [6..9]
 
 myNormalBorderColor  = "#222226"
 
