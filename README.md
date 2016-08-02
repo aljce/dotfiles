@@ -1,21 +1,25 @@
 # Kyle McKean's Dotfiles
 Dotfiles for: 
-* xmonad
-* xmobar
-* urxvt
-* spacemacs
-* rtorrent
-* offlineimap + mu4e
-* haskell-stack
+* antigen (install)
+* user-dirs
 * git
-* users-dirs
+* offlineimap
+* keycrypt (a ssh key strengthing script)
+* rtorrent
+* spacemacs (install)
+* spacemacs config
+* stack
+* xmobar
+* xmonad
+* zsh
+
 # Install 
 ```sh
-./installRepos.sh
+./install.sh
 ```
 or to install a single repo run
 ```sh
-./$REPO/install.sh
+./single-repo-path/install.sh
 ```
 If you are someone other than Kyle McKean you will want to do this because I doubt you want my email in everything ;)
 
