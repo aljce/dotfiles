@@ -43,7 +43,7 @@ values."
             shell-default-position 'bottom)
      spell-checking
      version-control
-     spotify
+     finance
      games
      erc
      xkcd
