@@ -10,4 +10,12 @@ SAVEHIST=1000
 setopt autocd beep extendedglob nomatch notify
 bindkey -v
 
-source "$HOME/.antigen.zsh
+source "$HOME/.antigen.zsh"
+
+antigen use oh-my-zsh
+
+antigen bundle https://github.com/spwhitt/nix-zsh-completions.git
+
+antigen theme lambda
+
+antigen apply
