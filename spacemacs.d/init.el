@@ -32,6 +32,7 @@ values."
      purescript
      nixos
      rust
+     html
      git
      markdown
      (org :variables
