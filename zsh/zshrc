@@ -21,3 +21,6 @@ antigen bundle extract
 antigen theme lambda
 
 antigen apply
+
+# Horrifing hack please remove 
+export PATH=~/.npm/bin:$PATH 
