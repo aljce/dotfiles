@@ -272,15 +272,9 @@ layers configuration. You are free to put any user code."
   (when (not (display-graphic-p))
     (setq dotspacemacs-mode-line-unicode-symbols nil))
 
-  ;; (setq org-agenda-files '("~/org/misc.org"))
+  (setq org-agenda-files '("~/org/agenda.org"))
 
   (epa-file-enable)
-
-  (spacemacs/set-leader-keys "oe" (lambda () (interactive) (erc-tls
-     :server "layer3communications.irc.slack.com"
-     :port 6667
-     :nick "mckeankylej"
-     :full-name "mckeankylej")))
 
   (load "~/.spacemacs.d/mail.el")
 )

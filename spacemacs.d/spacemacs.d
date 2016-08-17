@@ -1,1 +1,0 @@
-/home/kyle/repos/dotfiles/spacemacs.d

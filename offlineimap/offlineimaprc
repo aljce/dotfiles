@@ -1,5 +1,5 @@
 [general]
-accounts = personal,layer3
+accounts = personal, gsu
 maxsyncaccounts = 3
 pythonfile = ~/.offlineimap.py
 
@@ -24,20 +24,20 @@ realdelete = no
 nametrans = lambda foldername: re.sub('^Sent Messages$', 'Sent', foldername)
 folderfilter = lambda foldername: foldername not in ['[Gmail]/All Mail']
 
-[Account layer3]
-localrepository = layer3-local
-remoterepository = layer3-remote
+[Account gsu]
+localrepository = gsu-local
+remoterepository = gsu-remote
 
-[Repository layer3-local]
+[Repository gsu-local]
 type = Maildir
-localfolders = ~/.mail/layer3
+localfolders = ~/.mail/gsu
 nametrans = lambda foldername: re.sub('^Sent Items$' , 'Sent', re.sub('^Deleted Items$', 'Deleted', foldername))
 
-[Repository layer3-remote]
+[Repository gsu-remote]
 type = IMAP
 remotehost = outlook.office365.com
-remoteuser = kmckean@layer3com.com
-remotepasseval = get_pass("layer3")
+remoteuser = kmckean1@student.gsu.edu
+remotepasseval = get_pass("gsu")
 ssl = yes
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 nametrans = lambda foldername: re.sub('^Sent Items$' , 'Sent', re.sub('^Deleted Items$', 'Deleted', foldername))
