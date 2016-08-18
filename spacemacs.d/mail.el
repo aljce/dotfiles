@@ -25,9 +25,7 @@
                                      (user-full-name . "Kyle McKean")
                                      (mu4e-trash-folder . "/gsu/Deleted")
                                      (mu4e-sent-folder . "/gsu/Sent")
-                                     (mu4e-drafts-folder . "/gsu/Drafts")
-                                     ;; (smtpmail-starttls-credentials . '(("smtp.")))
-                                     (smtpmail-default-smtp-server . "smtp.office365.com"))))
+                                     (mu4e-drafts-folder . "/gsu/Drafts"))))
       mu4e-maildir-shortcuts '(("/personal/INBOX" . ?p) ("/gsu/INBOX" . ?g))
       mu4e-sent-messages-behavoir 'delete
       mu4e-attachment-dir "~/download"
