@@ -42,7 +42,8 @@
       mu4e-view-show-images t
       mu4e-confirm-quit nil)
 
-(setq message-send-mail-function 'smtpmail-send-it)
+(setq message-send-mail-function 'message-send-mail-with-sendmail
+      sendmail-program "/run/current-system/sw/bin/msmtp")
 
 ;; use imagemagick, if available
 (when (fboundp 'imagemagick-register-types)
