@@ -1,5 +1,7 @@
 set -e
 echo "Installing Zsh-Users Antigen"
+git submodule init
+git submodule update
 ln -sf "$PWD/zsh/antigen/antigen.zsh" "$HOME/.antigen.zsh"
 echo "Installed Zsh-Users Antigen"
 echo "Installing Kyle McKeans's Zsh Files"
