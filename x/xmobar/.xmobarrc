@@ -22,7 +22,8 @@ Config { font = "xft:Source Code Pro:size=18"
                                    , "--normal"   , "#4f97d7"
                                    , "--high"     , "#e0211d"
                                    ] 10
-                    , Run Battery  [ "--template" , "Batt: <acstatus>"
+                    , Run BatteryP ["BAT1"]
+                                   [ "--template" , "Batt: <acstatus>"
                                    , "--Low"      , "20"        -- units: %
                                    , "--High"     , "80"        -- units: %
                                    , "--low"      , "#e0211d"

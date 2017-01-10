@@ -57,7 +57,7 @@ myKeys conf =
   , ("M-S-q", io exitSuccess)
   ] ++
   [("M"++ shf ++ "-" ++ [wsId], windows (f ws))
-  | (ws,wsId) <- zip (workspaces conf) "123456789"--"&[{}(=*)+]" Programmers dvorak anyone?
+  | (ws,wsId) <- zip (workspaces conf) "&[{}(=*)+]"
   , (f ,shf) <- [(W.greedyView,""),(\w -> W.greedyView w . W.shift w ,"-S")]]
 
 myMouseBindings (XConfig {XMonad.modMask = modm}) = M.empty

@@ -3,7 +3,9 @@ zstyle :compinstall filename '/home/kyle/.zshrc'
 
 autoload -Uz compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
-eval "$(stack --bash-completion-script stack)"
+if type "$stack" > /dev/null; then
+   eval "$(stack --bash-completion-script stack)"
+fi
 
 HISTFILE=~/.histfile
 HISTSIZE=1000

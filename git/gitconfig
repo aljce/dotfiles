@@ -3,3 +3,5 @@
 	name = Kyle McKean
 [core]
 	editor = emacs
+[alias]
+	pullall = "!f(){ git pull \"$@\" && git submodule update --init --recursive; }; f"
