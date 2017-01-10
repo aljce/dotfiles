@@ -1,7 +1,20 @@
 #!/usr/bin/env bash
 set -e
-ls */install.sh | bash
-echo "Installing Zsh-Users Antigen"
-ln -sf "$PWD/antigen/antigen.zsh" "$HOME/.antigen.zsh"
-echo "Installed Zsh-Users Antigen"
+
+while true; do
+  read -p "Do you want this system to have my graphical dotfiles? [Y/n]: " ANSWER
+  case $ANSWER in
+    [Yy] | [Yy][Ee][Ss] ) GRAPHICAL=true; break;;
+    [Nn] | [Nn][Oo] ) GRAPHICAL=false; break;;
+    * ) echo "Please answer [Y]es or [N]o"
+  esac
+done
+
+if [ $GRAPHICAL == true ]; then
+  ls */install.sh | bash
+else
+  ls . -I x -I dirs | awk '{print $0 "/install.sh"}' | bash
+fi
+
+echo
 echo "All repos installed succesfully"
