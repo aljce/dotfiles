@@ -68,7 +68,7 @@ myLayout = (avoidStruts . fullscreenFull) (nTall ||| full)
 
 myManageHook = manageDocks
 
-myEventHook = mempty
+myEventHook = docksEventHook
 
 myLogHook xmproc = dynamicLogWithPP xmobarPP
                      { ppOutput = hPutStrLn xmproc
